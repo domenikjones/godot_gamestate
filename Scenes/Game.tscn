@@ -1,11 +1,24 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
+[node name="GameStateLabel" type="Label" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 83.0
+margin_bottom = 19.0
+text = "GameState: "
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 119.052, 86.4437 )
+
 [node name="PauseMenu" type="Control" parent="."]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -28,6 +41,7 @@ margin_bottom = 133.0
 margin_right = 138.0
 margin_bottom = 14.0
 text = "Pause Menu"
+align = 1
 
 [node name="ContinueButton" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
 margin_top = 18.0
@@ -46,13 +60,6 @@ margin_top = 66.0
 margin_right = 138.0
 margin_bottom = 86.0
 text = "Quit the Game"
-
-[node name="GameStateLabel" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 83.0
-margin_bottom = 19.0
-text = "GameState: "
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

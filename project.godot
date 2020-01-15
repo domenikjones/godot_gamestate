@@ -21,7 +21,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameState="*res://Scenes/GameState.tscn"
+GameState="*res://Autoload/GameState.tscn"
+Resources="*res://Autoload/Resources.tscn"
 
 [display]
 

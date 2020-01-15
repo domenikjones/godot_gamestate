@@ -13,7 +13,7 @@ func _process(delta):
 	show_pause_menu()
 
 
-func show_pause_menu():	
+func show_pause_menu():
 	if GameState.get_current_state() == "Pause":
 		pause_menu.visible = true
 	else:

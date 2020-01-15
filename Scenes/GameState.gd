@@ -6,16 +6,24 @@ onready var state_animator = $State
 func _ready():
 	set_current_state("Menu")
 
-func set_current_state(new_value):
-	state_animator.play(new_value)
-	current_state = new_value
+func set_current_state(new_state):
+	state_animator.play(new_state)
+	current_state = new_state
+	handle_scene_change(get_tree().get_current_scene().get_name(), new_state)
 	
 func get_current_state():
 	return current_state
 	
+func handle_scene_change(current_scene, new_state):
+	print("current_scene", current_scene)
+	if new_state == "InGame" and current_scene != "Game":
+		get_tree().change_scene("res://Scenes/Game.tscn")
+		return
+	
 func toggle_pause():
 	# avoid pause in menu, we could exit the game
 	if current_state == "Menu":
+		get_tree().quit()
 		return
 	
 	# unpause

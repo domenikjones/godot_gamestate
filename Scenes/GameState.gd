@@ -6,12 +6,7 @@ onready var state_animator = $State
 func _ready():
 	set_current_state("Menu")
 
-func _on_State_animation_changed(old_name, new_name):
-	print("_on_State_animation_changed " + new_name)
-	set_current_state(new_name)
-
 func set_current_state(new_value):
-	print("set_current_state " + new_value)
 	state_animator.play(new_value)
 	current_state = new_value
 	
@@ -34,3 +29,6 @@ func toggle_pause():
 		print("pause")
 		set_current_state("Pause")
 		return
+	
+func _on_State_animation_changed(old_name, new_name):
+	set_current_state(new_name)
